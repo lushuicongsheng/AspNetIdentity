@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@Page.Title</title>
+        @RenderSection("head", required: false)
+        @*@System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+        @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")*@
+
+    </head>
+    <body>
+        @RenderBody()
+
+        @RenderSection("scripts", required: false)
+
+    </body>
+</html>

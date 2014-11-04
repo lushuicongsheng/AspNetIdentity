@@ -1,0 +1,50 @@
+﻿@model AspNetIdentity.Models.Login
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <h1>Login [ validate by jquery.validate.unobtrusive.js combine jquery.qtip.js]</h1>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.UserName)</td>
+                <td>@Html.TextBoxFor(m => m.UserName)</td>
+                @*<td>@Html.ValidationMessageFor(m => m.UserName)</td>*@
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.PasswordFor(m => m.Password)</td>
+                @*<td>@Html.ValidationMessageFor(m => m.Password)</td>*@
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.RememberMe)</td>
+                <td>@Html.CheckBoxFor(m => m.RememberMe)</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Login" /></td>
+            </tr>
+        </table>
+    }
+    @Html.ValidationSummary()
+
+    <br /><br />
+    @Html.ActionLink("Register a new account !","Register","Account")
+
+@section Scripts{
+<script src="~/Scripts/jquery-1.8.3.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.qtip.js"></script>
+<script src="~/Scripts/qTip/jquery.qtip.min.js"></script>
+<link href="~/Scripts/qTip/jquery.qtip.min.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(function () {
+        $("form").makeValidationInline();
+    });
+</script>
+}
+
